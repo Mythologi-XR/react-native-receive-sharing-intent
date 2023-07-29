@@ -69,19 +69,6 @@ public class ReceiveSharingIntentHelper {
         String link = intent.getDataString();
         WritableMap files = new WritableNativeMap();
         WritableMap file = new WritableNativeMap();
-        if (
-          type.startsWith("image") ||
-          type.startsWith("video") ||
-          type.startsWith("audio")
-        ) {
-          String filePath = ReceiveSharingIntentGetFileDirectory.getFilePath(
-            context,
-            Uri.parse(link)
-          );
-          file.putString("filePath", filePath);
-        } else {
-          file.putString("weblink", link);
-        }
       } else if (Objects.equals(action, "android.intent.action.PROCESS_TEXT")) {
         String text = null;
         try {
@@ -92,8 +79,8 @@ public class ReceiveSharingIntentHelper {
         file.putString("contentUri", null);
         file.putString("filePath", null);
         file.putString("fileName", null);
-        file.putString("extension", null);
         file.putString("weblink", null);
+        file.putString("extension", null);
         file.putString("text", text);
       } else if (Objects.equals(action, "android.intent.action.PROCESS_TEXT")) {
         String text = null;
