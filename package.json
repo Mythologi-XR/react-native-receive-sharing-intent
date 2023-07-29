@@ -1,6 +1,6 @@
 {
-  "name": "react-native-receive-sharing-intent",
-  "version": "2.0.0",
+  "name": "@mythologi/react-native-receive-sharing-intent",
+  "version": "2.1.0",
   "description": "A React Native plugin that enables React Native apps to receive sharing photos, videos, text, urls or any other file types from another app.",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -36,13 +36,16 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/ajith-ab/react-native-receive-sharing-intent",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mythologi-XR/react-native-receive-sharing-intent.git"
+  },
   "author": "Ajith A B <ajith4ab@gmail.com> (https://github.com/ajith-ab)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ajith-ab/react-native-receive-sharing-intent/issues"
+    "url": "https://github.com/Mythologi-XR/react-native-receive-sharing-intent/issues"
   },
-  "homepage": "https://github.com/ajith-ab/react-native-receive-sharing-intent#readme",
+  "homepage": "https://github.com/Mythologi-XR/react-native-receive-sharing-intent#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
@@ -117,11 +120,15 @@
       "prettier/prettier": [
         "error",
         {
-          "quoteProps": "consistent",
-          "singleQuote": true,
+          "printWidth": 105,
           "tabWidth": 2,
-          "trailingComma": "es5",
-          "useTabs": false
+          "useTabs": false,
+          "semi": false,
+          "singleQuote": true,
+          "trailingComma": "all",
+          "bracketSpacing": true,
+          "bracketSameLine": true,
+          "arrowParens": "avoid"
         }
       ]
     }
@@ -132,11 +139,15 @@
     "docs/"
   ],
   "prettier": {
-    "quoteProps": "consistent",
-    "singleQuote": true,
+    "printWidth": 105,
     "tabWidth": 2,
-    "trailingComma": "es5",
-    "useTabs": false
+    "useTabs": false,
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "bracketSpacing": true,
+    "bracketSameLine": true,
+    "arrowParens": "avoid"
   },
   "react-native-builder-bob": {
     "source": "src",
