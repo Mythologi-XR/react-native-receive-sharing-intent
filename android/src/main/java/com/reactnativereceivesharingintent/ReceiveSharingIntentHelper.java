@@ -32,20 +32,24 @@ public class ReceiveSharingIntentHelper {
       if (type == null) {
         return;
       }
-      if (!type.startsWith("text") &&
-          (Objects.equals(action, Intent.ACTION_SEND) ||
-           Objects.equals(action, Intent.ACTION_SEND_MULTIPLE))) {
+      if (
+        !type.startsWith("text") &&
+        (
+          Objects.equals(action, Intent.ACTION_SEND) ||
+          Objects.equals(action, Intent.ACTION_SEND_MULTIPLE)
+        )
+      ) {
         WritableMap files = getMediaUris(intent, context);
         promise.resolve(files);
-      } else if (type.startsWith("text") &&
-                 Objects.equals(action, Intent.ACTION_SEND)) {
+      } else if (
+        type.startsWith("text") && Objects.equals(action, Intent.ACTION_SEND)
+      ) {
         String text = null;
         String subject = null;
         try {
           text = intent.getStringExtra(Intent.EXTRA_TEXT);
           subject = intent.getStringExtra(Intent.EXTRA_SUBJECT);
-        } catch (Exception ignored) {
-        }
+        } catch (Exception ignored) {}
         if (text == null) {
           WritableMap files = getMediaUris(intent, context);
           promise.resolve(files);
@@ -61,15 +65,19 @@ public class ReceiveSharingIntentHelper {
           files.putMap("0", file);
           promise.resolve(files);
         }
-
       } else if (Objects.equals(action, Intent.ACTION_VIEW)) {
         String link = intent.getDataString();
         WritableMap files = new WritableNativeMap();
         WritableMap file = new WritableNativeMap();
-        if (type.startsWith("image") || type.startsWith("video") ||
-            type.startsWith("audio")) {
+        if (
+          type.startsWith("image") ||
+          type.startsWith("video") ||
+          type.startsWith("audio")
+        ) {
           String filePath = ReceiveSharingIntentGetFileDirectory.getFilePath(
-              context, Uri.parse(link));
+            context,
+            Uri.parse(link)
+          );
           file.putString("filePath", filePath);
         } else {
           file.putString("weblink", link);
@@ -78,8 +86,7 @@ public class ReceiveSharingIntentHelper {
         String text = null;
         try {
           text = intent.getStringExtra(intent.EXTRA_PROCESS_TEXT);
-        } catch (Exception e) {
-        }
+        } catch (Exception e) {}
         WritableMap files = new WritableNativeMap();
         WritableMap file = new WritableNativeMap();
         file.putString("contentUri", null);
@@ -92,8 +99,7 @@ public class ReceiveSharingIntentHelper {
         String text = null;
         try {
           text = intent.getStringExtra(intent.EXTRA_PROCESS_TEXT);
-        } catch (Exception e) {
-        }
+        } catch (Exception e) {}
         WritableMap files = new WritableNativeMap();
         WritableMap file = new WritableNativeMap();
         file.putString("contentUri", null);
@@ -110,23 +116,29 @@ public class ReceiveSharingIntentHelper {
     } catch (Exception e) {
       promise.reject("error", e.toString());
     }
-  };
+  }
 
   @RequiresApi(api = Build.VERSION_CODES.KITKAT)
   public WritableMap getMediaUris(Intent intent, Context context) {
-    if (intent == null)
-      return null;
+    if (intent == null) return null;
     String subject = null;
     WritableMap files = new WritableNativeMap();
     if (Objects.equals(intent.getAction(), Intent.ACTION_SEND)) {
       WritableMap file = new WritableNativeMap();
-      Uri contentUri = (Uri)intent.getParcelableExtra(Intent.EXTRA_STREAM);
+      Uri contentUri = (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM);
       if (contentUri != null) {
-        String filePath =
-            FileDirectory.INSTANCE.getAbsolutePath(context, contentUri);
+        String filePath = FileDirectory.INSTANCE.getAbsolutePath(
+          context,
+          contentUri
+        );
         ContentResolver contentResolver = context.getContentResolver();
-        Cursor queryResult =
-            contentResolver.query(contentUri, null, null, null, null);
+        Cursor queryResult = contentResolver.query(
+          contentUri,
+          null,
+          null,
+          null,
+          null
+        );
         queryResult.moveToFirst();
         if (filePath != null) {
           file.putString("fileName", getFileName(filePath));
@@ -138,27 +150,39 @@ public class ReceiveSharingIntentHelper {
         file.putString("contentUri", contentUri.toString());
         files.putMap("0", file);
       }
-    } else if (Objects.equals(intent.getAction(),
-                              Intent.ACTION_SEND_MULTIPLE)) {
-      ArrayList<Uri> contentUris =
-          intent.getParcelableArrayListExtra(Intent.EXTRA_STREAM);
+    } else if (
+      Objects.equals(intent.getAction(), Intent.ACTION_SEND_MULTIPLE)
+    ) {
+      ArrayList<Uri> contentUris = intent.getParcelableArrayListExtra(
+        Intent.EXTRA_STREAM
+      );
       if (contentUris != null) {
         int index = 0;
         for (Uri uri : contentUris) {
           WritableMap file = new WritableNativeMap();
           ContentResolver contentResolver = context.getContentResolver();
-          String filePath =
-              FileDirectory.INSTANCE.getAbsolutePath(context, uri);
+          String filePath = FileDirectory.INSTANCE.getAbsolutePath(
+            context,
+            uri
+          );
           // Based on
           // https://developer.android.com/training/secure-file-sharing/retrieve-info
           file.putString("mimeType", contentResolver.getType(uri));
-          Cursor queryResult =
-              contentResolver.query(uri, null, null, null, null);
+          Cursor queryResult = contentResolver.query(
+            uri,
+            null,
+            null,
+            null,
+            null
+          );
           queryResult.moveToFirst();
           if (filePath != null) {
-            file.putString("fileName",
-                           queryResult.getString(queryResult.getColumnIndex(
-                               OpenableColumns.DISPLAY_NAME)));
+            file.putString(
+              "fileName",
+              queryResult.getString(
+                queryResult.getColumnIndex(OpenableColumns.DISPLAY_NAME)
+              )
+            );
             file.putString("extension", getExtension(filePath));
           } else {
             file.putString("fileName", null);
@@ -184,12 +208,14 @@ public class ReceiveSharingIntentHelper {
 
   public void clearFileNames(Intent intent) {
     String type = intent.getType();
-    if (type == null)
-      return;
+    if (type == null) return;
     if (type.startsWith("text")) {
       intent.removeExtra(Intent.EXTRA_TEXT);
-    } else if (type.startsWith("image") || type.startsWith("video") ||
-               type.startsWith("application")) {
+    } else if (
+      type.startsWith("image") ||
+      type.startsWith("video") ||
+      type.startsWith("application")
+    ) {
       intent.removeExtra(Intent.EXTRA_STREAM);
     }
     intent.setData(null);

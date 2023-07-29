@@ -2,7 +2,6 @@ package com.example.reactnativereceivesharingintent;
 
 import android.content.Intent;
 import android.util.Log;
-
 import com.facebook.react.ReactActivity;
 
 public class MainActivity extends ReactActivity {
@@ -17,7 +16,6 @@ public class MainActivity extends ReactActivity {
     super.onNewIntent(intent);
     setIntent(intent);
   }
-
 
   @Override
   protected String getMainComponentName() {

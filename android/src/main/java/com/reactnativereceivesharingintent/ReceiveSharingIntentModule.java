@@ -11,6 +11,7 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 
 public class ReceiveSharingIntentModule extends ReactContextBaseJavaModule {
+
   public final String Log_Tag = "ReceiveSharingIntent";
 
   private final ReactApplicationContext reactContext;
@@ -21,9 +22,9 @@ public class ReceiveSharingIntentModule extends ReactContextBaseJavaModule {
     super(reactContext);
     this.reactContext = reactContext;
     Application applicationContext =
-        (Application)reactContext.getApplicationContext();
+      (Application) reactContext.getApplicationContext();
     receiveSharingIntentHelper =
-        new ReceiveSharingIntentHelper(applicationContext);
+      new ReceiveSharingIntentHelper(applicationContext);
   }
 
   protected void onNewIntent(Intent intent) {

@@ -15,11 +15,7 @@
     "tag": "v0.63.4"
   },
   "source_files": "{Drivers/*,Nodes/*,*}.{m,mm}",
-  "preserve_paths": [
-    "package.json",
-    "LICENSE",
-    "LICENSE-docs"
-  ],
+  "preserve_paths": ["package.json", "LICENSE", "LICENSE-docs"],
   "header_dir": "RCTAnimation",
   "pod_target_xcconfig": {
     "USE_HEADERMAP": "YES",
@@ -27,23 +23,11 @@
     "HEADER_SEARCH_PATHS": "\"$(PODS_ROOT)/Folly\""
   },
   "dependencies": {
-    "Folly": [
-      "2020.01.13.00"
-    ],
-    "RCTTypeSafety": [
-      "0.63.4"
-    ],
-    "ReactCommon/turbomodule/core": [
-      "0.63.4"
-    ],
-    "React-jsi": [
-      "0.63.4"
-    ],
-    "FBReactNativeSpec": [
-      "0.63.4"
-    ],
-    "React-Core/RCTAnimationHeaders": [
-      "0.63.4"
-    ]
+    "Folly": ["2020.01.13.00"],
+    "RCTTypeSafety": ["0.63.4"],
+    "ReactCommon/turbomodule/core": ["0.63.4"],
+    "React-jsi": ["0.63.4"],
+    "FBReactNativeSpec": ["0.63.4"],
+    "React-Core/RCTAnimationHeaders": ["0.63.4"]
   }
 }

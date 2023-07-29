@@ -6,10 +6,9 @@ Also, supports iOS Share extension and launching the host app automatically. Che
 
 ## Demo
 
-| Android | Ios | 
-| :---: | :---: | 
-| <img height="400" src="https://raw.githubusercontent.com/ajith-ab/react-native-receive-sharing-intent/master/doc/android.gif" />| <img height="400"  src="https://raw.githubusercontent.com/ajith-ab/react-native-receive-sharing-intent/master/doc/ios.gif" /> |
-
+|                                                             Android                                                              |                                                              Ios                                                              |
+| :------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------: |
+| <img height="400" src="https://raw.githubusercontent.com/ajith-ab/react-native-receive-sharing-intent/master/doc/android.gif" /> | <img height="400"  src="https://raw.githubusercontent.com/ajith-ab/react-native-receive-sharing-intent/master/doc/ios.gif" /> |
 
 ## Installation
 
@@ -22,8 +21,8 @@ Also, supports iOS Share extension and launching the host app automatically. Che
 
 <p><a href="https://www.paypal.me/ajithab" rel="nofollow"><img height="75" src="https://raw.githubusercontent.com/stefan-niedermann/paypal-donate-button/master/paypal-donate-button.png" style="max-width:100%;"></a></p>
 
-
 ### Author
+
 [Ajith A B](https://www.linkedin.com/in/ajith-a-b-a61303197)
 
 ### licenses

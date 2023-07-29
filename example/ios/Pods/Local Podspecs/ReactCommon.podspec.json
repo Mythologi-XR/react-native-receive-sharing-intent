@@ -25,27 +25,13 @@
     {
       "name": "turbomodule",
       "dependencies": {
-        "React-callinvoker": [
-          "0.63.4"
-        ],
-        "React-Core": [
-          "0.63.4"
-        ],
-        "React-cxxreact": [
-          "0.63.4"
-        ],
-        "React-jsi": [
-          "0.63.4"
-        ],
-        "Folly": [
-          "2020.01.13.00"
-        ],
-        "DoubleConversion": [
-
-        ],
-        "glog": [
-
-        ]
+        "React-callinvoker": ["0.63.4"],
+        "React-Core": ["0.63.4"],
+        "React-cxxreact": ["0.63.4"],
+        "React-jsi": ["0.63.4"],
+        "Folly": ["2020.01.13.00"],
+        "DoubleConversion": [],
+        "glog": []
       },
       "subspecs": [
         {
@@ -62,9 +48,7 @@
             "turbomodule/samples/platform/ios/*.{mm,cpp,h}"
           ],
           "dependencies": {
-            "ReactCommon/turbomodule/core": [
-              "0.63.4"
-            ]
+            "ReactCommon/turbomodule/core": ["0.63.4"]
           }
         }
       ]
