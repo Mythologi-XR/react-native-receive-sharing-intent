@@ -79,8 +79,8 @@ public class ReceiveSharingIntentHelper {
         file.putString("contentUri", null);
         file.putString("filePath", null);
         file.putString("fileName", null);
-        file.putString("weblink", null);
         file.putString("extension", null);
+        file.putString("weblink", null);
         file.putString("text", text);
       } else if (Objects.equals(action, "android.intent.action.PROCESS_TEXT")) {
         String text = null;
