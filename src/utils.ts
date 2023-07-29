@@ -48,7 +48,7 @@ class Utils implements IUtils {
   }
 
   getFileName = (file: string): string => {
-    return file.replace(/^.*(\\|\/|\:)/, '');
+    return file.replace(/^.*(\\|\/|:)/, '');
   };
 
   getExtension = (fileName: string): string => {
