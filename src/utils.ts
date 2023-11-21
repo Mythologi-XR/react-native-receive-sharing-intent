@@ -61,7 +61,7 @@ class Utils implements IUtils {
     const type = Object.entries(MimeTypes).find(
       (mime) => mime[0] === extension
     );
-    if (type) return type[0];
+    if (type) return type[1];
     return '';
   };
 }
